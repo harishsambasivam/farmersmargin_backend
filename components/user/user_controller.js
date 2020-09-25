@@ -18,6 +18,13 @@ module.exports.signUp = async (req, res) => {
   }
 };
 
+console.log(
+  jwt.sign({ name: "harish", email: "harish@mail.com" }, privateKey, {
+    algorithm: "HS256",
+    // expiresIn: jwtExpirySeconds,
+  })
+);
+
 module.exports.signIn = async (req, res, next) => {
   // fetch user and test password verification
   const { name, email, password } = req.body;
