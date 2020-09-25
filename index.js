@@ -23,7 +23,7 @@ server.use(bodyParser.json());
 const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => console.log(`server started on port ${PORT}`));
 
-server.use("/", usersRouter);
+server.use("/user", usersRouter);
 server.use("/fields", fieldRouter);
 server.use("/farms", farmRouter);
 server.use("/access_token", accessTokenRouter);
