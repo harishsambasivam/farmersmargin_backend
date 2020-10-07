@@ -5,6 +5,7 @@ dotenv.config({ path: "./config/config.env" });
 const privateKey = process.env.SECRET_KEY;
 
 module.exports.signUp = async (req, res) => {
+  console.log(req.body);
   const { name, email, password } = req.body;
   try {
     const user = await Users.create({
@@ -14,16 +15,17 @@ module.exports.signUp = async (req, res) => {
     });
     return res.status(200).send(user);
   } catch (err) {
+    console.log(err);
     return res.send(err.message);
   }
 };
 
-console.log(
-  jwt.sign({ name: "harish", email: "harish@mail.com" }, privateKey, {
-    algorithm: "HS256",
-    // expiresIn: jwtExpirySeconds,
-  })
-);
+// console.log(
+//   jwt.sign({ name: "harish", email: "harish@mail.com" }, privateKey, {
+//     algorithm: "HS256",
+//     // expiresIn: jwtExpirySeconds,
+//   })
+// );
 
 module.exports.signIn = async (req, res, next) => {
   // fetch user and test password verification
